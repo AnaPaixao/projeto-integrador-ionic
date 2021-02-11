@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "proj01",
+  "appId": "com.github.AnaPaixao.projeto",
+  "appName": "projeto",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
