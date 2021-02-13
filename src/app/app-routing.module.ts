@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+
+const toLogin = () => redirectUnauthorizedTo(['/login']);
+const isLogged = () => redirectLoggedInTo(['/home']);
+
 const routes: Routes = [
   {
     path: '',
@@ -25,12 +30,32 @@ const routes: Routes = [
   },
   {
     path: 'view/:id',
-    loadChildren: () => import('./pages/view/view.module').then( m => m.ViewPageModule)
+    loadChildren: () => import('./pages/view/view.module').then( m => m.ViewPageModule),
+    // Só pode ser vista se estiver logado
+    canActivate: [AngularFireAuthGuard], data: {authGuardPipe: toLogin}
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+    // Só pode ser vista se não estiver logado
+    canActivate: [AngularFireAuthGuard], data: {authGuardPipe: isLogged}
+  },
+  {
+    path: 'logout',
+    loadChildren: () => import('./pages/logout/logout.module').then( m => m.LogoutPageModule),
+    // Só pode ser vista se estiver logado
+    canActivate: [AngularFireAuthGuard], data: {authGuardPipe: toLogin}
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
+    // Só pode ser vista se estiver logado
+    canActivate: [AngularFireAuthGuard], data: {authGuardPipe: toLogin}
   },
   {
     path: '**',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
-  }
+  },
 ];
 
 @NgModule({
