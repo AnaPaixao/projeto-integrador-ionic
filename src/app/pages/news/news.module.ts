@@ -8,12 +8,16 @@ import { NewsPageRoutingModule } from './news-routing.module';
 
 import { NewsPage } from './news.page';
 
+//dependências
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NewsPageRoutingModule
+    NewsPageRoutingModule,
+    HttpClientModule
   ],
   declarations: [NewsPage]
 })

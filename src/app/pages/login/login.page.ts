@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import firebase from 'firebase/app';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-login',
@@ -13,42 +14,26 @@ export class LoginPage implements OnInit {
 
   constructor(
     public auth: AngularFireAuth,
-    private alertCtrl: AlertController,
     private router: Router,
+    private app: AppService
   ) { }
 
   ngOnInit() {
   }
 
-  login() { 
+  login() {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-    .then(
-      (data) => {
+      .then(
+        (data) => {
 
-        // exibe feedback
-        this.myAlert(
-          `Olá ${data.user.displayName}!`,
-          'Você já pode acessar acessar todos os recursos do aplicativo.'
-        );
-      }
-    )
-    .catch((error) => {console.log(error)});
-  }
-
-  // Método que exibe popup
-  async myAlert(title: string, text: string) {
-    const alert = await this.alertCtrl.create({
-      header: title,
-      message: text,
-      buttons: [{
-        text: 'OK',
-        handler: () => {
-          this.router.navigate(['/home']);
+          // 3.3) Exibe feedback usando service 'app.myAlert'
+          this.app.myAlert(
+            `Olá ${data.user.displayName}!`,
+            'Você já pode acessar todos os recursos do aplicativo.',
+            () => { this.router.navigate(['/home']); }
+          );
         }
-
-      }]
-    });
-    alert.present();
+      )
+      .catch((error) => { console.log(error) });
   }
-
 }
