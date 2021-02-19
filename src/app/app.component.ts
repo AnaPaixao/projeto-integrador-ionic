@@ -11,4 +11,9 @@ export class AppComponent {
   constructor(
     public auth: AngularFireAuth
   ) {}
+
+  openURL(){
+    window.open("http://visit.rio/que_fazer/museu-de-astronomia-e-ciencias-afins-mast/");
+    return false;
+  }
 }

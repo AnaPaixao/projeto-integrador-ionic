@@ -23,7 +23,7 @@ export class NewsPage implements OnInit {
 
   ngOnInit() {
     // usando JSON para obter as noticias 
-    this.http.get(this.apiURL).subscribe((data) => {
+    this.http.get(this.apiURL).subscribe((data: any) => {
       this.newsList = data.articles.slice(0, this.apiItens);
     });
   }

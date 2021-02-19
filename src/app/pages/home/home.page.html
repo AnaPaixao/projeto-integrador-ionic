@@ -1,32 +1,32 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-      <ion-title>Início</ion-title>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+            <ion-title>Início</ion-title>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding" fullscreen *ngIf="items">
 
-  <h2 class="ion-margin-bottom">Artigos Recentes</h2>
+    <h2 class="ion-margin-bottom ion-text-center">Artigos Recentes</h2>
 
-  <!-- 2. Exibe os artigos -->
-  <div *ngFor="let item of items | async">
+    <!-- 2. Exibe os artigos -->
+    <div *ngFor="let item of items | async">
 
-    <!-- 3. 'card' clicável com o link do artigo -->
-    <ion-card class="ion-no-margin ion-margin-bottom" routerLink="/view/{{item.artId}}">
+        <!-- 3. 'card' clicável com o link do artigo -->
+        <ion-card class="ion-no-margin ion-margin-bottom" routerLink="/view/{{item.artId}}">
 
-      <img src="{{ item.img }}" alt="{{ item.title }}">
+            <img src="{{ item.img }}" alt="{{ item.title }}">
 
-      <ion-card-header>
-        <ion-card-title>{{ item.title }}</ion-card-title>
-      </ion-card-header>
+            <ion-card-header>
+                <ion-card-title>{{ item.title }}</ion-card-title>
+            </ion-card-header>
 
-      <ion-card-content>{{ item.intro }}</ion-card-content>
+            <ion-card-content>{{ item.intro }}</ion-card-content>
 
-    </ion-card>
+        </ion-card>
 
-  </div>
+    </div>
 
 </ion-content>

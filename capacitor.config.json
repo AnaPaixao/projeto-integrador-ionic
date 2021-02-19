@@ -1,6 +1,6 @@
 {
-  "appId": "com.github.AnaPaixao.projeto",
-  "appName": "projeto",
+  "appId": "conversasCelestes.com.github.AnaPaixao",
+  "appName": "conversasCelestes",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

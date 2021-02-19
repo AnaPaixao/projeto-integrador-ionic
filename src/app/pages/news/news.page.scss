@@ -1,3 +1,14 @@
 ion-card {
     cursor: pointer;
 }
+
+div {
+    display: flex;
+    justify-content: center;
+}
+
+@media(min-width: 778px) {
+    ion-card {
+        max-width: 500px;
+    }
+}

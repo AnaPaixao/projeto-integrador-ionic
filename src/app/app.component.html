@@ -63,13 +63,19 @@
                         </ion-item>
                     </ion-menu-toggle>
                 </ng-template>
+
+                <p class="ion-text-center">
+                    <ion-text (click)="openURL()" color="primary">Visite o Museu de Astronomia e Ciências Afins</ion-text>
+                </p>
             </ion-content>
+
+
 
             <!--Mensagem de Copyright-->
             <ion-text class="ion-text-center ion-padding" color="medium">
                 <small>
-         &copy; Copyright 2021 Ana Paixão
-      </small>
+          &copy; Copyright 2021 Ana Paixão
+        </small>
             </ion-text>
         </ion-menu>
         <ion-router-outlet id="main-content"></ion-router-outlet>
